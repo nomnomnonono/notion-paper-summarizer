@@ -1,11 +1,13 @@
 from argparse import ArgumentParser
+from pathlib import Path
 
+import requests
 from dotenv import load_dotenv
 from pydantic import BaseModel
 
 
 class Argments(BaseModel):
-    test: str
+    url: str
 
     @classmethod
     def parse_args(cls: BaseModel) -> BaseModel:
@@ -16,7 +18,10 @@ class Argments(BaseModel):
 
 
 def main(args: Argments) -> None:
-    return args
+    # URLからPDFをダウンロード
+    url = args.url.replace("/abs/", "/pdf/")
+    response = requests.get(url, timeout=10)
+    Path("tmp.pdf").write_bytes(response.content)
 
 
 if __name__ == "__main__":

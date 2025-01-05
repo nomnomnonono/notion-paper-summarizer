@@ -1,6 +1,6 @@
 # Notion Paper Summarizer
 ## Overview
-Notion上の論文DBに自動で要約を追加するためのスクリプト。
+Notion上の論文DBに自動で要約を追加するためのスクリプト。現状はarxivのみ対応。
 
 ## Requirements
 - Python
