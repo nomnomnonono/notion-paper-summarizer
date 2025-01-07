@@ -1,7 +1,7 @@
 from argparse import ArgumentParser
 from pathlib import Path
 
-import requests
+import requests  # type: ignore[import-untyped]
 from dotenv import load_dotenv
 from pydantic import BaseModel
 
@@ -10,7 +10,7 @@ class Argments(BaseModel):
     url: str
 
     @classmethod
-    def parse_args(cls: BaseModel) -> BaseModel:
+    def parse_args(cls) -> BaseModel:
         parser = ArgumentParser()
         for k in cls.schema()["properties"]:
             parser.add_argument(f"-{k[0:1]}", f"--{k}")

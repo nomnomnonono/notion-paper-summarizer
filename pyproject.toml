@@ -13,7 +13,9 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "mypy>=1.14.1",
     "ruff>=0.8.6",
+    "types-requests>=2.32.0.20241016",
 ]
 
 [tool.ruff]
@@ -43,3 +45,23 @@ logger-objects = ["src.library.logger.LOGGER"]
 
 [tool.ruff.lint.pylint]
 max-args = 6
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_defs = false
+

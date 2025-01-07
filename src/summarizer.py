@@ -24,4 +24,4 @@ class Summarizer:
             ),
         )
 
-        return response.candidates[0].content.parts
+        return str(response.candidates[0].content.parts)
